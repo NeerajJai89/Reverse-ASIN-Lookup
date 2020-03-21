@@ -40,6 +40,8 @@ gem 'watir'
 
 gem 'bootsnap'
 
+gem 'chromedriver-helper'
+
 # Gem for adding pagination
 
 gem 'will_paginate'
