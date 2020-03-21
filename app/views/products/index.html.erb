@@ -1,18 +1,6 @@
 
 
 <div class="screen-wrap">
-
-<div >
-    <div class="searchbar">
-  <%= form_with(url: "/products", method: "post") do %>
-        <%= text_field_tag(:asin, nil, placeholder: "Enter an ASIN Number..",:class => 'searchbar__input',required: true) %>
-        <%= submit_tag("Search",:class => 'searchbar__button') %>
-      <% end %>
-        
-    </div>
-    <h2>Amazon ASIN Product Finder</h2>
-    
-  </div>
   <br>
   <div>
     <% flash.each do |key, value| %>
@@ -20,7 +8,6 @@
       <% end %>
     
   </div>
-<br>
   <div class="table-container">
     <table class="content-table">
     <caption class="caption">All Results</caption>
