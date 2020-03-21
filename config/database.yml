@@ -19,6 +19,7 @@ development:
   password: <%= ENV['RDS_PASSWORD'] %>
   host: <%= ENV['RDS_HOST'] %>
   port: <%= ENV['RDS_PORT'] %>
+  
 
 production:
   <<: *default
