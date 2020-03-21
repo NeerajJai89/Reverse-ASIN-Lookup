@@ -1,0 +1,46 @@
+
+<div class="screen-wrap">
+  <div class="topnav">
+    <a class="active" href="#home">Amazon ASIN Product Finder</a>
+    <div class="search-container">
+      <%= form_with(url: "/products", method: "post") do %>
+        <%= text_field_tag(:asin, nil, placeholder: "Search..") %>
+        <%= submit_tag("Submit ASIN") %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+  </div>
+  <div class="table-container">
+  
+    <table class="content-table">
+      <thead>
+      <tr class="active-row">
+        <th >Title</th>
+        <th >Rank</th>
+        <th >Category</th>
+        <th >Dimensions</th>
+      </tr>
+      </thead>
+      <% if !@products.nil? %>
+      <% @products.each do |product| %>
+        <tr class="active-row">
+          <td ><%= product.title %></td>
+          <td ><%= product.rank %></td>
+          <td ><%= product.category %></td>
+          <td ><%= product.dimensions %></td>
+        </tr>
+      <% end %>
+      <% end %>
+      
+    </table>
+  </div>
+</div>
+
+

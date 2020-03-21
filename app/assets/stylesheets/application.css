@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ * {
+  font-family: sans-serif; /* Change your font family */
+}
+
+.caption{
+  font-size: 1.8em;
+  font-style: oblique;
+  
+  color: #009879;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+/*
+New CSS goes below
+*/
+
+.searchbar {
+    width: 100%;
+    max-width: 300px;
+    display: inline-flex;
+    float: center;
+}
+
+.searchbar--max-width {
+    max-width: 100%;
+}
+
+.searchbar__input {
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #009879;
+    border-radius: 5px 0 0 5px;
+    background: #F4FAF9;
+    transition: background 0.25s, box-shadow 0.25s;
+}
+
+.searchbar__input:focus {
+    background: white;
+    box-shadow: 0 0 2px #8CC6BA;
+}
+
+.searchbar__input::placeholder {
+    color: #8CC6BA;
+}
+
+.searchbar__button {
+    width: 40px;
+    height: 35px;
+    background: #009879;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+    float:right;
+}
+
+.searchbar__button:active {
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+}
+h2 {
+  display: inline;
+}
+
+
+
+
+  

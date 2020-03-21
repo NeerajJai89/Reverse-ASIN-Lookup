@@ -1,0 +1,49 @@
+
+
+<div class="screen-wrap">
+
+<div >
+    <div class="searchbar">
+  <%= form_with(url: "/products", method: "post") do %>
+        <%= text_field_tag(:asin, nil, placeholder: "Enter an ASIN Number..",:class => 'searchbar__input',required: true) %>
+        <%= submit_tag("Search",:class => 'searchbar__button') %>
+      <% end %>
+        
+    </div>
+    <h2>Amazon ASIN Product Finder</h2>
+    
+  </div>
+  <br>
+  <div>
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    
+  </div>
+<br>
+  <div class="table-container">
+    <table class="content-table">
+    <caption class="caption">All Results</caption>
+      <thead>
+      <tr class="active-row">
+        <th >ASIN</th>
+        <th >Rank</th>
+        <th >Category</th>
+        <th >Dimensions</th>
+      </tr>
+      </thead>
+      
+      <% @products.each do |product| %>
+        <tr class="active-row">
+          <td ><%= product.asin %></td>
+          <td ><%= product.rank %></td>
+          <td ><%= product.category %></td>
+          <td ><%= product.dimensions %></td>
+        </tr>
+      <% end %>
+      
+    </table>
+    <%= will_paginate @products,:page_links => false %>
+  </div>
+</div>                             		                                                        
+
