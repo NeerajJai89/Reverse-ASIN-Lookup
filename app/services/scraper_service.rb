@@ -1,5 +1,4 @@
 class ScraperService
-  include ParseHelper
   attr_reader :doc, :asin
 
   def initialize(asin:)
@@ -9,21 +8,45 @@ class ScraperService
 
   def scrape
     {
-      category: parse_category(scrape_category),
-      rank: parse_rank(scrape_rank),
-      dimensions: parse_dimensions(scrape_dimensions),
+      category: parse_data(scrape_category,'category'),
+      rank: parse_data(scrape_rank,'rank'),
+      dimensions: parse_data(scrape_dimensions,'dimensions'),
       asin: asin
     }
   end
 
   private
 
+  def parse_data(raw_data,content)
+    if content == 'rank'
+      regex = %r{(?<#{content}>#.+?)(?=\s\()}
+    elsif content == 'category'
+        regex = %r{(?<#{content}>\w+(.\w+)*)}
+    else
+        regex = %r{(?<#{content}>\w.+$)}
+    end
+    parsed = parse_raw_content(raw_data, regex)
+    if content == 'category'
+      return "" unless parsed.present?
+    else
+      return "Not Available" unless parsed.present?
+    end
+    
+    
+    parsed["#{content}"]
+  end
+
+  def parse_raw_content(raw_content, regex)
+    return "" unless raw_content
+    raw_content.match(regex)
+  end
+
   def scrape_dimensions
     path = "//*[contains(text(),'Product Dimensions')]/following-sibling::td"
     main_element_path = doc.xpath(path).try(:text)
     return main_element_path if main_element_path.present?
 
-    doc.xpath("//*[contains(text(),'Product Dimensions')]/following-sibling::span").try(:text)
+    doc.xpath("//*[contains(text(),'Item Dimensions')]/following-sibling::td/span[0]").try(:text)
   end
 
   def scrape_category

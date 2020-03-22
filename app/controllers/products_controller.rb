@@ -13,8 +13,7 @@ class ProductsController < ApplicationController
         flash[:notice] = "Product successfully saved!"
         redirect_to product_url(product)
       else
-        p 'inside here the fated error'
-        flash[:alert] = "Sorry, we can't locate this product"
+        flash[:alert] = "Sorry, the product could not be found"
         redirect_back(fallback_location: products_url)
       end
     end
@@ -23,7 +22,6 @@ class ProductsController < ApplicationController
 
   def show
     @product ||= query_db(create_params[:id])
-    #@product ||= Product.where(:asin => create_params[:asin]).first
   end
 
   private
@@ -37,7 +35,6 @@ class ProductsController < ApplicationController
   end
 
   def product_hash
-    #query_db(create_params[:asin])
     @product_hash ||= ScraperService.new(asin: create_params[:asin]).scrape
   end
 end
