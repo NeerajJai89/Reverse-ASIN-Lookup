@@ -13,6 +13,7 @@ class ContentRetrieverService
     options.add_argument('--disable-dev-shm-usage')
     browser = Selenium::WebDriver.for :chrome, options: options
     browser.get path
+    p browser.page_source
     Nokogiri::HTML.parse(browser.page_source)
     browser.quit()
   end
