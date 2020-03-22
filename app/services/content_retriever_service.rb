@@ -6,8 +6,8 @@ class ContentRetrieverService
   end
 
   def get_content
-    options = Selenium::WebDriver::Chrome::Options.new
     Selenium::WebDriver::Chrome.driver_path="/usr/bin/chromedriver"
+    options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
