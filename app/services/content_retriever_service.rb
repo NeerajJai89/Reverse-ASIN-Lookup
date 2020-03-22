@@ -11,7 +11,7 @@ class ContentRetrieverService
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    browser = Selenium::WebDriver.for :chrome, options: options
+    browser = Selenium::WebDriver.for :remote, options: options
     p 'reached here'
 
     browser.get path
