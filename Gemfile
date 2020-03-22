@@ -62,7 +62,7 @@ group :production do
   gem 'vcr', '~> 5.0'
   gem "webmock"
   gem 'rails-controller-testing'
-  gem 'chromedriver-helper'
+  #gem 'chromedriver-helper'
   gem 'selenium-webdriver'
 end
 
