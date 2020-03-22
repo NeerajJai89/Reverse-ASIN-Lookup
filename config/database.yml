@@ -9,24 +9,26 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+
+
 development:
   <<: *default
   adapter: mysql2
-  database: <%= ENV['RDS_DB'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOST'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  database: 'amazon_development'
+  username: 'admin'
+  password: 'amazonasin'
+  host: 'database-2.c1oa8zkofb1h.us-east-1.rds.amazonaws.com'
+  port: '3306'
   
 
 production:
   <<: *default
   adapter: mysql2
-  database: <%= ENV['RDS_DB'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOST'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  database: 'amazon_development'
+  username: 'admin'
+  password: 'amazonasin'
+  host: 'database-2.c1oa8zkofb1h.us-east-1.rds.amazonaws.com'
+  port: '3306'
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
