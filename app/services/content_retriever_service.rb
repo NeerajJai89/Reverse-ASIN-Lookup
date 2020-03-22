@@ -14,6 +14,7 @@ class ContentRetrieverService
     browser = Selenium::WebDriver.for :chrome, options: options
     browser.get path
     Nokogiri::HTML.parse(browser.page_source)
+    browser.close()
   end
 
   private
