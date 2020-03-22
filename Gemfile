@@ -9,8 +9,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
 
 gem 'mysql2','~> 0.5.3'
 # Use Puma as the app server
@@ -38,9 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'watir'
 
-gem 'bootsnap'
 
-gem 'chromedriver-helper'
+gem 'bootsnap'
 
 # Gem for adding pagination
 
@@ -64,6 +61,8 @@ group :production do
   gem 'vcr', '~> 5.0'
   gem "webmock"
   gem 'rails-controller-testing'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end
 
 group :development do
