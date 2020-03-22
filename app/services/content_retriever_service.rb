@@ -6,9 +6,13 @@ class ContentRetrieverService
   end
 
   def get_content
-    browser = Watir::Browser.new(:chrome, headless: true)
-    browser.goto(path)
-    Nokogiri::HTML.parse(browser.html)
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    browser = Selenium::WebDriver.for :chrome, options: options
+    browser.get path
+    Nokogiri::HTML.parse(browser.page_source)
   end
 
   private
