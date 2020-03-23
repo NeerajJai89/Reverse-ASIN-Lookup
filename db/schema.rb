@@ -10,19 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190928231633) do
+ActiveRecord::Schema.define(version: 20190925035605) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "products", force: :cascade do |t|
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "asin"
     t.string "rank"
     t.string "category"
-    t.string "title"
+    t.string "dimensions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "dimensions"
   end
 
 end
