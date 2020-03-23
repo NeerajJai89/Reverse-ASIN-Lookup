@@ -50,14 +50,15 @@ class ScraperService
   end
 
   def scrape_category
-    doc.at("span.a-list-item").text
+    p doc.css("span.a-list-item").text
+    doc.css("span.a-list-item").text
   end
 
   def scrape_rank
     path = "//*[contains(text(),'Best Sellers Rank')]/following-sibling::td/span[1]/span[1]"
     main_element_path = doc.xpath(path).text
     return main_element_path if main_element_path.present?
-    secondary_element_path = doc.at("#SalesRank").text
+    secondary_element_path = doc.css("#SalesRank").text
     return secondary_element_path if secondary_element_path.present?
     doc.xpath("//table[@class='a-keyvalue prodDetTable']/tbody/tr[7]/td").text
   end
