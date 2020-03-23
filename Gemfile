@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.6.5"
+ruby "2.6.3"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -10,15 +10,16 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 
-# Adding gem for using the Proxycrawl API
+# gem for using the Proxycrawl API
 gem 'proxycrawl'
-# Gem for mysql
-gem 'mysql2','~> 0.5.3'
+
+# Gem for postgres
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'pg'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -66,7 +67,7 @@ group :production do
   gem "webmock"
   gem 'rails-controller-testing'
   #gem 'chromedriver-helper'
-  gem 'selenium-webdriver'
+  #gem 'selenium-webdriver'
 end
 
 group :development do
