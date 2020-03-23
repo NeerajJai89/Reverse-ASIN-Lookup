@@ -1,3 +1,4 @@
+require 'proxycrawl'
 class ContentRetrieverService
   attr_reader :asin
 
@@ -6,31 +7,26 @@ class ContentRetrieverService
   end
 
   def get_content
-    begin
-    #   options = Selenium::WebDriver::Chrome::Options.new
+
+    api = ProxyCrawl::API.new(token: ENV['CRAWLER_TOKEN'])
+    html = api.get(url)
+    Nokogiri::HTML(html.body)
+    # options = Selenium::WebDriver::Chrome::Options.new
     # options.add_argument('--headless')
     # options.add_argument('--no-sandbox')
-    # options.add_argument('--disable-dev-shm-usage')
-    # browser = Selenium::WebDriver.for :remote, options: options
-    # p 'reached here'
-
-    # browser.get path
-    # p browser.page_source
+    # browser = Selenium::WebDriver.for :chrome, options: options
+    # browser.get url
     # Nokogiri::HTML.parse(browser.page_source)
-    # browser.quit()
-    html = open(path, "User-Agent" => "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36").read
-    Nokogiri::HTML.parse(html)
-    rescue => ex
-      p ex
-    end
-    #Selenium::WebDriver::Chrome.driver_path="/usr/bin/chromedriver"
+
+    # html = open(path, "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36").read
+    # Nokogiri::HTML.parse(html)
     
   end
 
 
   private
 
-  def path
-    @path ||= "http://www.amazon.com/dp/#{asin}"
+  def url
+    @url ||= "http://www.amazon.com/dp/#{asin}"
   end
 end
