@@ -4,28 +4,19 @@
     <%= csrf_meta_tags %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
   <div class="topnav">
-    <a class="active" href="#home">Amazon ASIN Product Finder</a>
+    <a class="active" href="#home">Amazon ASIN Lookup</a>
     <div class="search-container">
       <%= form_with(url: "/products", method: "post") do %>
         <%= text_field_tag(:asin, nil, placeholder: "Enter ASIN number..") %>
         <%= submit_tag("Search") %>
       <% end %>
     </div>
-  </div>
-  <div>
-    <% if flash[:success] %>
-      <div class="success"><%= flash[:notice] %></div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
   </div>
     
     <%= yield %>
