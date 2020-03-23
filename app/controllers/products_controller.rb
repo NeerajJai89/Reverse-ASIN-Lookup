@@ -10,10 +10,10 @@ class ProductsController < ApplicationController
    else
     product = Product.new(product_hash)
     if product.save
-        flash[:notice] = "Product successfully saved!"
+        flash[:notice] = "Product saved!"
         redirect_to product_url(product)
       else
-        flash[:alert] = "Sorry, the product could not be found"
+        flash[:alert] = "Error,the product could not be found"
         redirect_back(fallback_location: products_url)
       end
     end
