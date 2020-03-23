@@ -3,7 +3,7 @@ class ScraperService
 
   def initialize(asin:)
     @asin = asin
-    @doc = ContentRetrieverService.new(asin: asin).get_content
+    @doc = CrawlerService.new(asin: asin).get_content
   end
 
   def scrape
@@ -31,8 +31,6 @@ class ScraperService
     else
       return "Not Available" unless parsed.present?
     end
-    
-    
     parsed["#{content}"]
   end
 
@@ -45,7 +43,6 @@ class ScraperService
     path = "//*[contains(text(),'Product Dimensions')]/following-sibling::td"
     main_element_path = doc.xpath(path).try(:text)
     return main_element_path if main_element_path.present?
-
     doc.xpath("//*[contains(text(),'Item Dimensions')]/following-sibling::td/span[0]").try(:text)
   end
 
