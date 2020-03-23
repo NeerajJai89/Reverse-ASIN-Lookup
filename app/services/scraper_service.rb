@@ -43,22 +43,22 @@ class ScraperService
 
   def scrape_dimensions
     path = "//*[contains(text(),'Product Dimensions')]/following-sibling::td"
-    main_element_path = doc.xpath(path).try(:text)
+    main_element_path = doc.xpath(path).text
     return main_element_path if main_element_path.present?
 
-    doc.xpath("//*[contains(text(),'Item Dimensions')]/following-sibling::td/span[0]").try(:text)
+    doc.xpath("//*[contains(text(),'Item Dimensions')]/following-sibling::td/span[0]").text
   end
 
   def scrape_category
-    doc.at_css("span.a-list-item").try(:text)
+    doc.at("span.a-list-item").text
   end
 
   def scrape_rank
     path = "//*[contains(text(),'Best Sellers Rank')]/following-sibling::td/span[1]/span[1]"
-    main_element_path = doc.xpath(path).try(:text)
+    main_element_path = doc.xpath(path).text
     return main_element_path if main_element_path.present?
-    secondary_element_path = doc.at_css("#SalesRank").try(:text)
+    secondary_element_path = doc.at("#SalesRank").text
     return secondary_element_path if secondary_element_path.present?
-    doc.xpath("//table[@class='a-keyvalue prodDetTable']/tbody/tr[7]/td").try(:text)
+    doc.xpath("//table[@class='a-keyvalue prodDetTable']/tbody/tr[7]/td").text
   end
 end
