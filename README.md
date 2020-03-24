@@ -9,9 +9,10 @@ A full-stack application build on rails that scrapes Amazon pages using an ASIN 
 3. Clone this repo to your machine
 4. Install bundler 2.0.1
 5. run `bundle install` via command line
-6. run `rails s` via command line
-7. visit `http://localhost:3000/products`
-8. Uses ProxyCrawler for handling scraping on remote servers deployments(ElasticbeanStalk/Heroku). Visit https://proxycrawl.com/ for more details on how to setup.
+6. Create the required database on postgres
+7. run `rails s` via command line
+8. visit `http://localhost:3000/products`
+9. Uses ProxyCrawler for handling scraping on remote servers deployments(ElasticbeanStalk/Heroku). Visit https://proxycrawl.com/ for more details on how to setup.
 
 
 ## Development Considerations
